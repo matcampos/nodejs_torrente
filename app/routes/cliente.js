@@ -1,6 +1,6 @@
 module.exports = (app) => {
 
-    app.get('/produtos', (req, res) => {
+    app.get('/cliente', (req, res) => {
         var mysql = require('mysql');
 
         var connection = mysql.createConnection({
@@ -10,8 +10,8 @@ module.exports = (app) => {
             database: 'sistema_produtos'
         });
 
-        connection.query("select * from produto", (err, result) => {
-            res.render('produtos/produtos', { produtos: result });
+        connection.query("select * from cliente", (err, result) => {
+            res.render('cliente/clientes', { clientes: result });
         });
 
     })
