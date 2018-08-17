@@ -4,6 +4,6 @@ module.exports = (app) => {
         app.config.dbconnection.query("select * from produto", (err, result) => {
             res.render('produtos/produtos', { produtos: result });
         });
-
     })
+
 }
