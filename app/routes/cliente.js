@@ -4,8 +4,10 @@ module.exports = (app) => {
         console.log(app.config);
         let connection = app.config.dbconnection();
         connection.query("select * from cliente", (err, result) => {
-            res.render('cliente/clientes', { clientes: result });
+            res.render('cliente/clientes', {
+                clientes: result
+            });
         });
     });
-    
+
 }
