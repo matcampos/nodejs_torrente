@@ -1,7 +1,5 @@
-module.exports = (app) => {
-
-    app.get('/cadastrar', (req, res) => {
-        res.render('admin/form_add_prod')
-    })
-
+module.exports = function(app){
+    app.get('/cadastrar', function(req, res){
+        res.render('admin/form_add_prod');
+    });
 }

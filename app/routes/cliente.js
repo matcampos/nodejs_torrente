@@ -1,13 +1,25 @@
-module.exports = (app) => {
+//var dbConnection = require('../../config/dbConnection');
+module.exports = function (app) {
+    app.get('/clientes', function (req, res) {
+        var connection = app.config.dbConnection();
+        var clientesModel = new app.app.models.clientesDAO(connection);
 
-    app.get('/cliente', (req, res) => {
-        console.log(app.config);
-        let connection = app.config.dbconnection();
-        connection.query("select * from cliente", (err, result) => {
-            res.render('cliente/clientes', {
-                clientes: result
-            });
+        clientesModel.getClientes(function (error, result) {
+            res.render('clientes/clientes', { clientes: result });
         });
+
     });
 
+    app.post('/clientes', function (req, res) {
+        var connection = app.config.dbConnection();
+        var clientesModel = new app.app.models.clientesDAO(connection);
+
+        clientesModel.salvarClientes(req.body, function (error, result) {
+            res.redirect('/clientes');
+        });
+    })
+
+    app.get('/clientes/cadastrar', function (req, res) {
+        res.render('clientes/cadastrar-clientes')
+    });
 }

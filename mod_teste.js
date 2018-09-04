@@ -1,5 +1,4 @@
-let msg = "Este módulo contêm uma string";
-
-module.exports = () => {
-    return msg
+module.exports = function(){
+    var msg = "Este módulo contem uma string!";
+    return msg;
 }
